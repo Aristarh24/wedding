@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аристарх & Дарья — Свадьба 09.08.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage: #8B9E7E;
+            --sage-light: #A8B99C;
+            --sage-dark: #6B7E5E;
+            --beige: #F5F0E8;
+            --beige-dark: #E8DFD0;
+            --cream: #FDFBF7;
+            --olive: #7A8B6F;
+            --gold: #C4A96A;
+            --text: #4A4A42;
+            --text-light: #6B6B60;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Floating leaves animation */
+        .leaf {
+            position: fixed;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.15;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--beige) 50%, var(--beige-dark) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(139, 158, 126, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(196, 169, 106, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 158, 126, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .botanical-line {
+            font-size: 2rem;
+            color: var(--sage);
+            opacity: 0.4;
+            margin-bottom: 1rem;
+            letter-spacing: 1rem;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1.5s ease-out 0.3s both;
+        }
+
+        .hero-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1.5s ease-out 0.6s both;
+        }
+
+        .hero-ampersand {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold);
+            display: block;
+            margin: 0.3rem 0;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        .hero-date {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 2.2rem;
+            letter-spacing: 0.5rem;
+            color: var(--text);
+            margin-top: 2rem;
+            animation: fadeInUp 1.5s ease-out 1.2s both;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 3rem auto;
+            animation: expandWidth 1.5s ease-out 1.5s both;
+        }
+
+        .hero-invitation {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 500px;
+            line-height: 1.8;
+            animation: fadeInUp 1.5s ease-out 1.8s both;
+            font-weight: 400;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite 3s;
+            color: var(--sage);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Section base */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 3rem;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            background: var(--beige);
+            padding: 4rem 1.5rem;
+        }
+
+        .countdown-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 3rem);
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--sage-dark);
+            line-height: 1;
+            display: block;
+            min-width: 80px;
+        }
+
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Story */
+        .story-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .story-text em {
+            color: var(--sage-dark);
+            font-style: italic;
+        }
+
+        /* Schedule */
+        .schedule-section {
+            background: var(--beige);
+            padding: 5rem 1.5rem;
+        }
+
+        .timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 130px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--sage-light), var(--sage-light), transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 2.6rem;
+            color: var(--sage-dark);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--sage);
+            margin: 0 1.5rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--beige);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content p {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .timeline-item.special .timeline-dot {
+            background: var(--gold);
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--beige);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .detail-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-card p {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Map */
+        .map-section {
+            background: var(--beige);
+            padding: 5rem 1.5rem;
+        }
+
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        .map-address {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .map-address strong {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* RSVP */
+        .rsvp-section {
+            text-align: center;
+            padding: 6rem 1.5rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--beige) 100%);
+        }
+
+        .rsvp-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .rsvp-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--sage);
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(139, 158, 126, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rsvp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .rsvp-button:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(139, 158, 126, 0.4);
+        }
+
+        .rsvp-button:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: var(--sage-dark);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer p {
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: 0.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+            to {
+                width: 60px;
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .timeline::before {
+                left: 80px;
+            }
+            .timeline-time {
+                min-width: 70px;
+                font-size: 2rem;
+            }
+            .timeline-dot {
+                margin: 0 1rem;
+            }
+            section {
+                padding: 3.5rem 1.2rem;
+            }
+            .countdown-section, .schedule-section, .map-section {
+                padding: 3.5rem 1.2rem;
+            }
+        }
+
+        /* Petal animation */
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            animation: petalFall linear infinite;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-5vh) rotate(0deg) translateX(0) scale(1);
+                opacity: 0;
+            }
+            5% { opacity: 0.2; }
+            50% {
+                transform: translateY(50vh) rotate(360deg) translateX(50px) scale(0.8);
+            }
+            95% { opacity: 0.2; }
+            100% {
+                transform: translateY(110vh) rotate(720deg) translateX(-30px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Dress code */
+        .dress-code-colors {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+        }
+
+        /* Photo frame decoration */
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--sage-light);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--beige);
+            font-size: 4rem;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+    </style>
+    <style>
+        .gallery-section {
+            padding: 0 1.5rem 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 0;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: 1.2rem;
+            letter-spacing: 0.1rem;
+            color: var(--text-light);
+            margin-top: 0.6rem;
+        }
+
+        .gallery-caption.bold {
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .gallery-grid img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating petals -->
+    <div id="petals"></div>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="botanical-line">&#10047; &#10047; &#10047;</div>
+        <p class="hero-subtitle">Приглашение на свадьбу</p>
+        <div class="photo-frame">&#127807;</div>
+        <h1 class="hero-names">
+            Аристарх
+            <span class="hero-ampersand">&</span>
+            Дарья
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-date">09 &middot; 08 &middot; 2026</p>
+        <p class="hero-invitation">
+            Мы нашли друг друга и хотим разделить<br>
+            этот особенный день с самыми близкими людьми
+        </p>
+        <a href="#countdown" class="scroll-hint">&#8964;</a>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown-section" id="countdown">
+        <div class="countdown-wrapper">
+            <h2 class="section-title">До нашего дня</h2>
+            <div class="section-divider"></div>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">---</span>
+                    <span class="countdown-label">дней</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">--</span>
+                    <span class="countdown-label">часов</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">--</span>
+                    <span class="countdown-label">минут</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">--</span>
+                    <span class="countdown-label">секунд</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section style="padding-bottom: 1.5rem;">
+        <h2 class="section-title">Наша история</h2>
+        <div class="section-divider"></div>
+        <p class="story-text">
+            Два сердца, одна судьба.<br><br>
+            Мы верим, что <em>любовь</em> &mdash; это не просто чувство,<br>
+            а ежедневный выбор быть рядом,<br>
+            поддерживать и радовать друг друга.<br><br>
+            И мы сделали свой выбор &mdash; <em>навсегда</em>.
+        </p>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="sv2.jpg" alt="Дарья">
+                <span class="gallery-caption">Дарья</span>
+            </div>
+            <div class="gallery-item">
+                <img src="sv1.jpg" alt="Стародубцевы">
+                <span class="gallery-caption bold">Стародубцевы</span>
+            </div>
+            <div class="gallery-item">
+                <img src="sv3.jpg" alt="Аристарх">
+                <span class="gallery-caption">Аристарх</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="schedule-section">
+        <h2 class="section-title">Программа дня</h2>
+        <div class="section-divider"></div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-time">17:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Начало торжества</h3>
+                    <p>Церемония бракосочетания. Самый трогательный момент нашего дня.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-time">17:30</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Праздничный банкет</h3>
+                    <p>Тёплая атмосфера, вкусная еда, тосты и поздравления от близких.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-time">20:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Свадебный торт</h3>
+                    <p>Сладкий момент! Разрезание торта и десертный стол.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-time">21:00</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Окончание праздничного дня</h3>
+                    <p>Или только начало&hellip; Каждый решает сам, как провести этот вечер.</p>
+                </div>
+            </div>
+            <div class="timeline-item special">
+                <span class="timeline-time">21:30</span>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Джакузи, хамам и до утра!</h3>
+                    <p>Для тех, кто готов продолжить &mdash; расслабление в спа-зоне и неформальное общение до рассвета.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details -->
+    <section>
+        <h2 class="section-title">Детали</h2>
+        <div class="section-divider"></div>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">&#128197;</div>
+                <h3>Дата</h3>
+                <p>9 августа 2026 года,<br>воскресенье</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">&#128205;</div>
+                <h3>Место</h3>
+                <p>г. Пермь,<br>ул. Кондаурова, 4</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">&#127807;</div>
+                <h3>Дресс-код</h3>
+                <p>Просим вас придерживаться палитры в спокойных тонах</p>
+                <div class="dress-code-colors">
+                    <div class="color-swatch" style="background: #8B9E7E;" title="Шалфей"></div>
+                    <div class="color-swatch" style="background: #C4A96A;" title="Золото"></div>
+                    <div class="color-swatch" style="background: #F5F0E8;" title="Бежевый"></div>
+                    <div class="color-swatch" style="background: #D4C5B0;" title="Слоновая кость"></div>
+                    <div class="color-swatch" style="background: #A8B99C;" title="Мята"></div>
+                </div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">&#128094;</div>
+                <h3>Сменная обувь</h3>
+                <p>Просим взять с собой сменную обувь для комфортного времяпровождения в зале</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">&#128090;</div>
+                <h3>Для хамама и джакузи</h3>
+                <p>Не забудьте взять с собой купальник и полотенце для спа-зоны</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">&#128522;</div>
+                <h3>Хорошее настроение</h3>
+                <p>И самое главное — возьмите с собой улыбку и хорошее настроение!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map -->
+    <section class="map-section">
+        <h2 class="section-title">Как нас найти</h2>
+        <div class="section-divider"></div>
+        <div class="map-container">
+            <iframe
+                src="https://maps.google.com/maps?q=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C+%D1%83%D0%BB.+%D0%9A%D0%BE%D0%BD%D0%B4%D0%B0%D1%83%D1%80%D0%BE%D0%B2%D0%B0+4&hl=ru&z=16&output=embed"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+        <p class="map-address">
+            <strong>Пермский край, г. Пермь</strong><br>
+            ул. Кондаурова, 4<br>
+            р-н Мотовилихинский
+        </p>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section" id="rsvp">
+        <h2 class="section-title">Ждём вас!</h2>
+        <div class="section-divider"></div>
+        <p class="rsvp-text">
+            Ваше присутствие &mdash; самый ценный подарок для нас.<br>
+            Пожалуйста, подтвердите своё участие, чтобы мы могли подготовить всё наилучшим образом.
+        </p>
+        <a href="https://forms.gle/REaT8dV6v6eyAMP87" target="_blank" class="rsvp-button" id="rsvpBtn">
+            Принять приглашение
+        </a>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-light); font-weight: 300;">
+            Просим подтвердить до 15 июля 2026
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-names">Аристарх & Дарья</p>
+        <p>09 &middot; 08 &middot; 2026 &middot; Пермь</p>
+        <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.7rem;">С любовью, для вас</p>
+    </footer>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const wedding = new Date('2026-08-09T17:00:00');
+            const now = new Date();
+            const diff = wedding - now;
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .detail-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Floating petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+
+            const size = Math.random() * 15 + 8;
+            const startX = Math.random() * 100;
+            const duration = Math.random() * 15 + 10;
+            const delay = Math.random() * 5;
+
+            const petals = ['🌸', '🍃', '🌿', '✾', '❁', '⚘'];
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = startX + 'vw';
+            petal.style.fontSize = size + 'px';
+            petal.style.animationDuration = duration + 's';
+            petal.style.animationDelay = delay + 's';
+
+            document.getElementById('petals').appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Create initial petals
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createPetal, i * 800);
+        }
+
+        // Keep creating petals
+        setInterval(createPetal, 3000);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
